@@ -1,9 +1,9 @@
 package com.pjatk.movieservice.model;
 
 public class Movie {
-    Long id;
-    String name;
-    Category category;
+    private Long id;
+    private String name;
+    private Category category;
 
     public Movie() {
     }

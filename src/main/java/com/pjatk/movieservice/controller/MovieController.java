@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/movies")
 public class MovieController {
     private MovieService movieService;
 
@@ -16,27 +16,27 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/movies")
+    @GetMapping()
     public ResponseEntity<List<Movie>> getMovies() {
         return ResponseEntity.ok(movieService.getMovies());
     }
 
-    @GetMapping("/movies/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Movie> getMovieById(@PathVariable Long id) {
         return ResponseEntity.ok(movieService.getMovieById(id));
     }
 
-    @PostMapping("/movies")
+    @PostMapping()
     public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
         return ResponseEntity.ok(movieService.addMovie(movie));
     }
 
-    @PutMapping("/movies/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Movie> editMovie(@PathVariable Long id, @RequestBody Movie movie) {
         return ResponseEntity.ok(movieService.editMovie(id, movie));
     }
 
-    @DeleteMapping("/movies/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMovie(@PathVariable Long id) {
         return movieService.deleteMovie(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
